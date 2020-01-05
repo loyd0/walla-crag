@@ -1,8 +1,25 @@
+function getEnv() {
+  switch (process.env.NODE_ENV) {
+    case "dev":
+      return "development"
+    case "development":
+      return "development"
+    case "prod":
+      return "production"
+    default:
+      return process.env.NODE_ENV
+  }
+}
+
+require("dotenv").config({
+  path: `.env.${getEnv()}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby and TailWind Starter`,
+    description: `A basic starter with Tailwind and Font Awesome`,
+    author: `Sam Loyd`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -45,7 +62,7 @@ module.exports = {
         develop: false, // Enable while using `gatsby develop`
         tailwind: true, // Enable tailwindcss support
         // whitelist: ['.article'], // Don't remove this selector
-        ignore: ['src/css/custom/', 'node_modules/aos/dist/'], // Ignore files/folders
+        ignore: ['src/css/custom/'], // Ignore files/folders
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
       }
     },
