@@ -4,6 +4,8 @@ import React from "react"
 import { graphql, useStaticQuery } from 'gatsby'
 import {Img} from 'gatsby-image'
 
+import Nav from '@components/Nav'
+
 const Header = ({ siteTitle }) => {
 
   const data = useStaticQuery(graphql`
@@ -23,11 +25,14 @@ const Header = ({ siteTitle }) => {
           }
         }
       }
+      contentfulNav(id: {eq: "fd8c3bd4-23a5-59c6-96f9-beae4c72da9d"}) {
+        items {
+          linkTo
+          text
+        }
+      }
     }
   `)
-
-
-  console.log(data)
   return (
     <header
       style={{
@@ -35,26 +40,10 @@ const Header = ({ siteTitle }) => {
         marginBottom: `1.45rem`,
       }}
     >
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-        }}
-      >
-        <img src={data.allContentfulLogo.edges[1].node.logo.file.url}/>
-        <h1 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
-      </div>
+      <Nav 
+        logo={data.allContentfulLogo.edges[1].node.logo.file.url} 
+        links={data.contentfulNav.items}
+      />
     </header>
   )
 
