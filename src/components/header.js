@@ -36,11 +36,14 @@ const Header = ({ siteTitle }) => {
   return (
     <header
       style={{
-        background: `rebeccapurple`,
         marginBottom: `1.45rem`,
+        position: 'fixed',
+        zIndex: 10,
+        width: '100%'
       }}
     >
       <Nav 
+        className="text-white"
         logo={data.allContentfulLogo.edges[1].node.logo.file.url} 
         links={data.contentfulNav.items}
       />

@@ -1,10 +1,10 @@
 module.exports = {
   theme: {
-    extend: {
-      display: {
-
-      }
-    }
+    fontFamily: {
+      body: ["Cairo", "sans-serif"],
+      display: ["Cairo", "sans-serif"],
+    },
+    extend: {}
   },
   variants: {},
   plugins: [],

@@ -1,4 +1,11 @@
 /* Add your custom css here */
-.hidden {
-    /* display: none !important; */
+html {
+    font-family: Cairo, sans-serif;
+    letter-spacing: 0.05rem;
+    font-weight: lighter;
+}
+
+
+body {
+    @apply bg-gray-100;
 }

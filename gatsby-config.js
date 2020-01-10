@@ -80,23 +80,24 @@ module.exports = {
         alias: {
           "@src": "src",
           "@components": "src/components",
+          "@elements": "src/components/Elements",
         },
         extensions: [
           "js",
         ],
       }
-    }
+    },
     // Add fonts here
-    // {
-    //   resolve: `gatsby-plugin-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       `limelight`,
-    //       `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
-    //     ],
-    //     display: 'swap'
-    //   }
-    // }
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Cairo`,
+          `\:400,600,700` // you can also specify font weights and styles
+        ],
+        display: 'swap'
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
