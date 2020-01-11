@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Feature = ({ iconClassName, className, textClassName, text, icon}) => {
+const Feature = ({ iconClassName, className, textClassName, text, icon, style, textStyle}) => {
     return (
-        <div className={`mx-2 px-2 ${className}`}>
+        <div className={`px-2 ${className}`} style={style}>
             <i className={`fa text-5xl md:text-6xl ${icon} ${iconClassName}`}> </i>
-            <p className={`my-4 text-justify ${textClassName}`}> 
+            <p style={textStyle} className={`my-4 ${textClassName}`}> 
             { text }
             </p>
         </div>

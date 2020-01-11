@@ -13,3 +13,11 @@ body {
 p {
     @apply mb-3
 }
+
+.bg-blue-gradient {
+    background: rgb(8,59,121);
+    background: -moz-linear-gradient(132deg, rgba(8,59,121,1) 0%, rgba(0,39,76,1) 100%);
+    background: -webkit-linear-gradient(132deg, rgba(8,59,121,1) 0%, rgba(0,39,76,1) 100%);
+    background: linear-gradient(132deg, rgba(8,59,121,1) 0%, rgba(0,39,76,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#083b79",endColorstr="#00274c",GradientType=1);
+}

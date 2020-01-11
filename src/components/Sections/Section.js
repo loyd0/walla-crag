@@ -1,15 +1,10 @@
 import React, {useRef, useState, useEffect} from 'react'
-import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
-import {Button} from "@elements"
 
 
 const Section = ({images, children, overlay, gradient}) => {
-    console.log(images)
-
 
     const [ sectionHeight, setSectionHeight ] = useState('100vh')
-
 
     const sectionRef = useRef(0)
 
