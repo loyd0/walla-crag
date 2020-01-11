@@ -66,7 +66,7 @@ const IndexPage = ({data }) => (
 
 {/* Features */}
     <div className="min-h-screen bg-blue-gradient text-secondary text-center flex flex-col justify-around"> 
-        <h2 className="mb-8 md:mb-0" > Features </h2>
+        <h2 className="my-8 md:mb-0" > Features </h2>
 
         <div className="flex flex-col justify-center py-6 ">
           <div className="flex flex-wrap w-3/4 max-w-5xl mx-auto "> 
