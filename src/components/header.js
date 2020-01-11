@@ -43,7 +43,7 @@ const Header = ({ siteTitle }) => {
       }}
     >
       <Nav 
-        className="text-white"
+        className="text-secondary"
         logo={data.allContentfulLogo.edges[1].node.logo.file.url} 
         links={data.contentfulNav.items}
       />
