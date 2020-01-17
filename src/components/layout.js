@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import { Footer } from '@components/Sections'
 import Header from "./header"
 
 const Layout = ({ children }) => {
@@ -12,21 +12,32 @@ const Layout = ({ children }) => {
           title
         }
       }
+      allContentfulLogo {
+        edges {
+          node {
+            id
+            logo {
+              file {
+                url
+                fileName
+                contentType
+              }
+            }
+            name
+          }
+        }
+      }
     }
   `)
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={data.site.siteMetadata.title} logo={data.allContentfulLogo.edges[1].node.logo.file.url} />
       <div
         className="mx-auto "
       >
         <main className="min-h-screen relative z-0 ">{children}</main>
-        <footer className="text-center">
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+       <Footer logo={data.allContentfulLogo.edges[1].node.logo.file.url} />
       </div>
     </>
   )
