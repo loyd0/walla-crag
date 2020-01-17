@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 import Section, { CarouselSection } from "@components/Sections"
 import { graphql } from "gatsby"
 import Img from 'gatsby-image'
-import {Button, Feature} from '@elements'
+import {Button, Feature, Availability} from '@elements'
 const features = [
   "1 King bed", "2 Single beds", "1 Sofa bed", "2 Bathrooms", "Roof terrace", "Wifi", "Very very quiet", "TV & Fire Stick", "Bluetooth speaker", "Fully equiped kitchen", "Private parking", "Central location"]
 const IndexPage = ({data }) => (
@@ -83,6 +83,26 @@ const IndexPage = ({data }) => (
         </div>
 
     </div>
+
+    {/* Availability */}
+    <Section 
+    overlay={0.25}
+    images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "buildings-min.jpg")
+    }>
+      <div className=" z-10 text-center w-full px-4 py-6 max-w-2xl self-center mx-auto">
+        <h2 className="inline-block font-bold ">Availability</h2>
+        <p className="text-center">Interesting booking the flat for a week, or two? Going of a series of refreshing hikes over a long weekend perhaps?
+        </p> 
+        <p className="text-center">Check out the current availability below.</p>
+
+        <div className="flex mt-8 flex-col md:flex-row">
+           <Availability />
+        </div>
+        
+      </div>
+      
+
+    </Section>
   </Layout>
 )
 

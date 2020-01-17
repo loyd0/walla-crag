@@ -16,7 +16,7 @@ const Section = ({images, children, overlay, gradient}) => {
     return (
         <section 
             ref={sectionRef}
-            className="min-h-screen flex flex-col justify-center text-center text-secondary">
+            className="min-h-screen flex flex-col justify-center text-center text-secondary h-full relative ">
            
             {gradient || overlay ?
                 <div 
@@ -26,9 +26,12 @@ const Section = ({images, children, overlay, gradient}) => {
                         height: sectionHeight,
 
                     }}
-            />: ""}
+            ></div>: ""}
+             <Img style={{ position: 'absolute', height: sectionHeight}} className="min-h-screen absolute top-0 w-screen" fluid={images[0].node.fluid} />
+
             {children}
-            <Img style={{ height: sectionHeight}} className="min-h-screen" fluid={images[0].node.fluid} />
+
+           
         </section>
     )
 }
