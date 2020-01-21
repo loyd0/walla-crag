@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 
 const Footer = ({ logo }) => {
     return (
-        <footer className="text-center pt-12 bg-primary text-white">
+        <footer className="text-center text-base pt-12 bg-primary text-white">
             <div className="flex md:flex-row flex-col">
                 <div className="flex flex-col w-full md:w-1/2 justify-center my-12 md:my-0">
                     <Link to="/"><img src={logo} className="h-10 m-0 ml-4 inline" /></Link>
@@ -19,7 +19,7 @@ const Footer = ({ logo }) => {
                         <Link className="w-full block hover:text-yellow-400" to="/#reviews">Reviews</Link>
                     </div>
                     <div className="w-full md: w-/12 text-left">
-                        <Link className="w-full block hover:text-yellow-400" to="/location">Location</Link>
+                        <Link className="w-full block hover:text-yellow-400" to="/keswick">Keswick</Link>
                         <Link className="w-full block hover:text-yellow-400" to="/friends">Friends</Link>
                     </div>
                 </div>

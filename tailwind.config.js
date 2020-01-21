@@ -7,8 +7,10 @@ module.exports = {
     extend: {
       colors: {
         primary: '#053E68',
+        "primary-transparent": '#053e6878',
         secondary: '#fafafa',
-        transparent: 'rgba(256,256,256,0.3)'
+        transparent: 'rgba(256,256,256,0.3)',
+        clear: 'rgba(256,256,256,0)'
       },
       height: {
         "50vh": '50vh',

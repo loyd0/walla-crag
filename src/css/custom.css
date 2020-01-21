@@ -21,3 +21,21 @@ p {
     background: linear-gradient(132deg, rgba(8,59,121,1) 0%, rgba(0,39,76,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#083b79",endColorstr="#00274c",GradientType=1);
 }
+
+
+.card {
+    background: rgba(0,0,0, 0.2);
+    transition: 1s;
+}
+
+.card:hover {
+    background: rgba(0,0,0, 0.35);
+}
+.card-light {
+    background: rgba(256,256,256, 0.1);
+    transition: 1s;
+}
+
+.card-light:hover {
+    background: rgba(256,256,256, 0.25);
+}

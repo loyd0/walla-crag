@@ -27,7 +27,7 @@ const Section = ({images, children, overlay, gradient, scrollToId, className}) =
 
                     }}
             ></div>: ""}
-             { images ? <Img style={{ position: 'absolute', height: sectionHeight}} className="min-h-screen absolute top-0 w-screen" fluid={images[0].node.fluid} /> : ""  }
+             { images ? <Img style={{ position: 'absolute', height: sectionHeight }} className="min-h-screen absolute top-0 w-screen" fluid={images[0].node.fluid} /> : ""  }
 
             {children}
                     
