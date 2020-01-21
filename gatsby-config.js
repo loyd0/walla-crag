@@ -17,8 +17,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby and TailWind Starter`,
-    description: `A basic starter with Tailwind and Font Awesome`,
+    title: `Walla Crag`,
+    description: `A cosy, quiet duplex flat in the heart of the beautiful town of Keswick with easy access to the whole of the Lake District.`,
     author: `Sam Loyd`,
   },
   plugins: [
@@ -81,6 +81,7 @@ module.exports = {
           "@src": "src",
           "@components": "src/components",
           "@elements": "src/components/Elements",
+          "@sections": "src/components/Sections",
         },
         extensions: [
           "js",

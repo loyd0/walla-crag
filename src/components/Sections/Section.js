@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect} from 'react'
 import Img from 'gatsby-image'
 
 
-const Section = ({images, children, overlay, gradient}) => {
+const Section = ({images, children, overlay, gradient, scrollToId, className}) => {
 
     const [ sectionHeight, setSectionHeight ] = useState('100vh')
 
@@ -16,8 +16,8 @@ const Section = ({images, children, overlay, gradient}) => {
     return (
         <section 
             ref={sectionRef}
-            className="min-h-screen flex flex-col justify-center text-center text-secondary h-full relative ">
-           
+            id={scrollToId ? scrollToId : ""} 
+            className={` min-h-screen flex flex-col justify-center text-center text-secondary h-full relative ${className} `}>
             {gradient || overlay ?
                 <div 
                     className="absolute min-h-screen w-screen z-10"
@@ -27,7 +27,7 @@ const Section = ({images, children, overlay, gradient}) => {
 
                     }}
             ></div>: ""}
-             <Img style={{ position: 'absolute', height: sectionHeight}} className="min-h-screen absolute top-0 w-screen" fluid={images[0].node.fluid} />
+             { images ? <Img style={{ position: 'absolute', height: sectionHeight}} className="min-h-screen absolute top-0 w-screen" fluid={images[0].node.fluid} /> : ""  }
 
             {children}
                     

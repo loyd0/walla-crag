@@ -1,9 +1,8 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Section, { CarouselSection, Review } from "@components/Sections"
+import Section, { CarouselSection, Review, Panes } from "@components/Sections"
 import { graphql } from "gatsby"
-import Img from 'gatsby-image'
 import { Button, Feature, Availability } from '@elements'
 const features = [
   "1 King bed", "2 Single beds", "1 Sofa bed", "2 Bathrooms", "Roof terrace", "Wifi", "Very very quiet", "TV & Fire Stick", "Bluetooth speaker", "Fully equiped kitchen", "Private parking", "Central location"]
@@ -17,12 +16,13 @@ const IndexPage = ({ data }) => (
       <div className="absolute z-10 text-center w-full px-8">
         <h1 className="border-b-4 border-white inline-block font-bold ">Your Escape in the Lakes</h1>
         <h2 className="text-2xl md:text-4xl text-shadow-xl mt-4 md:mt-2">A peaceful retreat in the center of Keswick</h2>
-        <Button className="mt-4"> Discover Walla</Button>
+        <Button className="mt-4" linkTo="/#the-flat"> Discover Walla</Button>
       </div>
 
 
     </Section>
     <Section
+      scrollToId="the-flat"
       overlay={0.25}
       images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "buildings-min.jpg")
       }>
@@ -65,16 +65,19 @@ const IndexPage = ({ data }) => (
     {/* Reviews */}
 
     <Section
+      scrollToId="reviews"
       overlay={0.25}
       images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "bathroom-min.jpg")
       }>
-
       < Review />
-
     </Section>
 
     {/* Features */}
-    <div className="min-h-screen bg-blue-gradient text-secondary text-center flex flex-col justify-around">
+    <Section 
+    
+    scrollToId="features"
+
+    className="min-h-screen bg-blue-gradient text-secondary text-center flex flex-col justify-around">
       <h2 className="my-8 md:mb-0" > Features </h2>
 
       <div className="flex flex-col justify-center py-6 ">
@@ -91,10 +94,11 @@ const IndexPage = ({ data }) => (
         </div>
       </div>
 
-    </div>
+    </Section>
 
     {/* Availability */}
     <Section
+      scrollToId="availability"
       overlay={0.25}
       images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "lake-min.jpg")
       }>
@@ -111,6 +115,29 @@ const IndexPage = ({ data }) => (
       </div>
 
 
+    </Section>
+    <Section
+      overlay={0.15}
+      >
+        <Panes  
+          panes={[
+            {
+              text: "Learn more about Keswick",
+              img: data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "boats-min.jpg"),
+              linkTo: '/location'
+            },
+            {
+              text: "Friends of Walla Crag",
+              img: data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "bar-min.jpg"),
+              linkTo: '/friends'
+            },
+            {
+              text: "Follow us for updates and news on Instagram @wallacrag",
+              img: data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "christmas-min.jpg"),
+              linkTo: '/location'
+            },
+          ]}
+        />
     </Section>
   </Layout>
 )

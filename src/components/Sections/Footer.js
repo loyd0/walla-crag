@@ -20,7 +20,7 @@ const Footer = ({ logo }) => {
                     </div>
                     <div className="w-full md: w-/12 text-left">
                         <Link className="w-full block hover:text-yellow-400" to="/location">Location</Link>
-                        <Link className="w-full block hover:text-yellow-400" to="/friends">Friends of Walla</Link>
+                        <Link className="w-full block hover:text-yellow-400" to="/friends">Friends</Link>
                     </div>
                 </div>
             </div>

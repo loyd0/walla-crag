@@ -15,8 +15,8 @@ const Availability = props => {
     return (
         <div className="flex flex-col sm:flex-row justify-around w-full flex-wrap h-full">
             {
-                months.map(month => {
-                    return <Month dates={month} total={months.length} />
+                months.map((month, index) => {
+                    return <Month key={index} dates={month} total={months.length} />
                 })
             }
         </div>
