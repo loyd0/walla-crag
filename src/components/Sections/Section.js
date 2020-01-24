@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 const Section = ({images, children, overlay, gradient, scrollToId, className}) => {
 
     const [ sectionHeight, setSectionHeight ] = useState('100vh')
-
+// console.log(images)
     const sectionRef = useRef(0)
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const Section = ({images, children, overlay, gradient, scrollToId, className}) =
 
                     }}
             ></div>: ""}
-             { images ? <Img style={{ position: 'absolute', height: sectionHeight }} className="min-h-screen absolute top-0 w-screen" fluid={images[0].node.fluid} /> : ""  }
+             { images ? <Img style={{ position: 'absolute', height: sectionHeight }} className="min-h-screen absolute top-0 w-screen" fluid={images.fluid} /> : ""  }
 
             {children}
                     

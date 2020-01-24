@@ -82,6 +82,7 @@ module.exports = {
           "@components": "src/components",
           "@elements": "src/components/Elements",
           "@sections": "src/components/Sections",
+          "@cms": "src/components/Sections/CMS",
         },
         extensions: [
           "js",

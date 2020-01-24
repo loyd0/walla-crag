@@ -1,5 +1,5 @@
 import Section from './Section'
-import CarouselSection from './CarouselSection'
+import CarouselSection from './CMS/CarouselSection'
 import Footer from './Footer'
 import Review from './Review'
 import Panes from './Panes'

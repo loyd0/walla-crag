@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 
 const Carousel = ({ images }) => {
-    const imagesArray = images.map(image => image.node.fluid)
+
+    const imagesArray = images.map(image => image.fluid)
     const showNav = images && imagesArray.length > 1
     const [currentImage, setCurrentImage] = useState(0)
-
     return (
-        <div className="w-full h-full relative">
+        <div className="w-full h-full relative over">
             <Img className="h-full z-0 " fluid={imagesArray[currentImage]} />
         { 
             showNav ?

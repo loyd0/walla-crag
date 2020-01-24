@@ -4,6 +4,7 @@ import Layout from '@components/layout'
 import Section, { CarouselSection } from "@components/Sections"
 import {  Card } from '@elements'
 import SEO from '../components/seo'
+import sectionParser from '../functions/CMSParser'
 
 
 
@@ -118,34 +119,15 @@ const activities = [
 
 
 const keswick = ({ data }) => {
+
+  const { allContentfulPage: { nodes } } = data
+
   return (
     <Layout>
-      <SEO title="Keswick and the Lakes" />
-      <Section
-        gradient
-        images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "sunset.jpg")
-        }>
-        <div className="z-10 absolute w-full">
-          <div className="z-10 text-center w-full px-8 max-w-2xl mx-auto">
-            <h1 className="border-b-4 border-white inline-block font-bold w-full ">Keswick</h1>
-            <h2 className="text-2xl md:text-4xl text-shadow-xl mt-4 md:mt-2 font-bold">The heart of the Lake District</h2>
-          </div>
-        </div>
+      <SEO title={ nodes[0].metaTitle} />
+      { nodes[0].sections.map(section =>  sectionParser(section)) }
+{/* 
 
-      </Section>
-      <CarouselSection
-        header="The Town"
-        description={["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "Photos of the town"]}
-        images={data.allImageSharp.edges.filter(({ node }) => match(node, "keswick-1.jpg") || match(node, "keswick-2.jpg") || match(node, "keswick-3.jpg"))}
-      />
-      <CarouselSection
-        reverse={true}
-        header="The Lake District"
-        description={["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "Photos of the lakes"]}
-        images={data.allImageSharp.edges.filter(({ node }) => match(node, "lakes-1.jpg") || match(node, "lakes-2.jpg") || match(node, "lakes-3.jpg") || match(node, "lakes-4.jpg") || match(node, "lakes-5.jpg"))}
-      />
-
-      {/* Walks */}
       <Section
       overlay={0.2}
         className="min-h-screen bg-blue-gradient text-secondary text-center flex flex-col justify-around py-12"
@@ -172,7 +154,7 @@ const keswick = ({ data }) => {
         </div>
 
       </Section>
-      {/* Activities */}
+
       <Section
       overlay={0.2}
         className="min-h-screen bg-blue-gradient text-secondary text-center flex flex-col justify-around py-12"
@@ -199,7 +181,7 @@ const keswick = ({ data }) => {
           </div>
         </div>
 
-      </Section>
+      </Section> */}
 
     </Layout>
   )
@@ -207,20 +189,108 @@ const keswick = ({ data }) => {
 
 
 export const keswickQuery = graphql`
-  query keswickQuery {
-  allImageSharp {
-    edges {
-      node {
-          # Specify a fluid image and fragment
-          # The default maxWidth is 800 pixels
-          fluid(maxWidth: 1600) {
-            ...GatsbyImageSharpFluid
-            originalName
+query keswickQuery {
+  allContentfulPage(filter: {slug: {eq: "/keswick"}}) {
+      nodes {
+        id
+        metaTitle
+        title
+        sections {
+          backgroundImage {
+            file {
+              url
+            }
+            fluid(maxWidth: 1600) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+            title
           }
+          type
+          name
+          parts {
+            ... on ContentfulContent {
+              id
+              title
+              callToAction {
+                text
+                type
+                linkTo
+              }
+              description {
+                description
+              }
+              internal {
+                type
+              }
+            }
+            ... on ContentfulCarousel {
+              id
+              images {
+                title
+                fluid(maxWidth: 1200) {
+                  ...GatsbyContentfulFluid_withWebp
+                }
+              }
+              title
+              internal {
+                type
+              }
+            }
+            ... on ContentfulList {
+              id
+              internal {
+                type
+              }
+              ... on ContentfulList {
+                id
+                internal {
+                  type
+                }
+                items {
+                  ... on ContentfulWalks {
+                    id
+                    icon {
+                      title
+                      file {
+                        url
+                      }
+                    }
+                    description 
+                    title
+                    difficulty
+                    time
+                  }
+                  ... on ContentfulFeature {
+                    id
+                    icon {
+                      title
+                      file {
+                        url
+                      }
+                    }
+                  }
+                  ... on ContentfulActivity {
+                    id
+                    title
+                    cost
+                    distance
+                    description
+                    icon {
+                      file {
+                        url
+                      }
+                      title
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
-  }
 }
+
 `
 
 
