@@ -66,58 +66,6 @@ const walks = [
 
 ]
 
-const activities = [
-  {
-    title: "Distillery Tour",
-    desc: "Stunning views, easy amble.",
-    icons: [
-      "💷",
-      "🚗"
-    ]
-  },
-  {
-    title: "Distillery Tour",
-    desc: "Stunning views, easy amble.",
-    icons: [
-      "💷",
-      "🚗"
-    ]
-  },
-  {
-    title: "Distillery Tour",
-    desc: "Stunning views, easy amble.",
-    icons: [
-      "💷",
-      "🚗"
-    ]
-  },
-  {
-    title: "Distillery Tour",
-    desc: "Stunning views, easy amble.",
-    icons: [
-      "💷",
-      "🚗"
-    ]
-  },
-  {
-    title: "Distillery Tour",
-    desc: "Stunning views, easy amble.",
-    icons: [
-      "💷",
-      "🚗"
-    ]
-  },
-  {
-    title: "Distillery Tour",
-    desc: "Stunning views, easy amble.",
-    icons: [
-      "💷",
-      "🚗"
-    ]
-  },
-]
-
-
 const keswick = ({ data }) => {
 
   const { allContentfulPage: { nodes } } = data
@@ -241,46 +189,41 @@ query keswickQuery {
               internal {
                 type
               }
-              ... on ContentfulList {
-                id
-                internal {
-                  type
+              type
+              items {
+                ... on ContentfulWalks {
+                  id
+                  icon {
+                    title
+                    file {
+                      url
+                    }
+                  }
+                  description 
+                  title
+                  difficulty
+                  time
                 }
-                items {
-                  ... on ContentfulWalks {
-                    id
-                    icon {
-                      title
-                      file {
-                        url
-                      }
-                    }
-                    description 
+                ... on ContentfulFeature {
+                  id
+                  icon {
                     title
-                    difficulty
-                    time
-                  }
-                  ... on ContentfulFeature {
-                    id
-                    icon {
-                      title
-                      file {
-                        url
-                      }
+                    file {
+                      url
                     }
                   }
-                  ... on ContentfulActivity {
-                    id
-                    title
-                    cost
-                    distance
-                    description
-                    icon {
-                      file {
-                        url
-                      }
-                      title
+                }
+                ... on ContentfulActivity {
+                  id
+                  title
+                  cost
+                  distance
+                  description
+                  icon {
+                    file {
+                      url
                     }
+                    title
                   }
                 }
               }

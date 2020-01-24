@@ -5,7 +5,7 @@ const Linked = ({linkTo, children, style, className}) => {
 
     const regex = RegExp('http|wwww');
     const outward = regex.test(linkTo)
-
+    console.log(linkTo, outward)
     return outward ? <a 
     style={style}
     className={className}

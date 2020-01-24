@@ -5,7 +5,6 @@ import Img from 'gatsby-image'
 const Section = ({images, children, overlay, gradient, scrollToId, className}) => {
 
     const [ sectionHeight, setSectionHeight ] = useState('100vh')
-// console.log(images)
     const sectionRef = useRef(0)
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from '@elements'
 import { Link } from 'gatsby'
 
-const Footer = ({ logo }) => {
+const Footer = ({ logo, items }) => {
     return (
         <footer className="text-center text-base pt-12 bg-primary text-white">
             <div className="flex md:flex-row flex-col">
@@ -13,23 +13,23 @@ const Footer = ({ logo }) => {
                 </div>
                 <div className="flex flex-row w-full md:w-1/2 py-4">
                     <div className="w-full md: w-/12 text-left px-16">
-                        <Link className="w-full block hover:text-yellow-400" to="/#flat">The Flat</Link>
-                        <Link className="w-full block hover:text-yellow-400" to="/#features">Features</Link>
-                        <Link className="w-full block hover:text-yellow-400" to="/#availability">Availability</Link>
-                        <Link className="w-full block hover:text-yellow-400" to="/#reviews">Reviews</Link>
+                        {items.filter(item => item.linkTo.includes("#")).map(item => {
+                            return <Link key={item.text} className="w-full block hover:text-yellow-400" to={item.linkTo}>{item.text}</Link>
+                        })}
+
                     </div>
                     <div className="w-full md: w-/12 text-left">
-                        <Link className="w-full block hover:text-yellow-400" to="/keswick">Keswick</Link>
-                        <Link className="w-full block hover:text-yellow-400" to="/friends">Friends</Link>
+                    {items.filter(item => !item.linkTo.includes("#")).map(item => {
+                            return <Link key={item.text} className="w-full block hover:text-yellow-400" to={item.linkTo}>{item.text}</Link>
+                        })}
                     </div>
                 </div>
             </div>
             <div className="text-sm flex flex-col justify-end mt-12">
-                <a href="https://instagram.com/wallacrag" target="_blank" rel="noopener noreferrer"></a><i className="fab fa-instagram text-3xl my-3" /> 
+                <a href="https://instagram.com/wallacrag" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram text-3xl my-3" /></a>
                 <p>
-                    <a href="https://antler.digital" target="_blank" rel="noopener noreferrer"> Designed and built by <span className="underline hover:text-yellow-400">Antler Digital</span> </a>
+                    <a href="https://antler.digital" target="_blank" rel="noopener noreferrer"> Designed and built by <span className="underline hover:text-yellow-500">Antler Digital</span> </a>
                 </p>
-
                 <p className="mb-2">
                     Copy Right © Walla Crag {new Date().getFullYear()}
                 </p>

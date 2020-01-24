@@ -1,9 +1,8 @@
 import Section from './Section'
 import CarouselSection from './CMS/CarouselSection'
 import Footer from './Footer'
-import Review from './Review'
-import Panes from './Panes'
+import Carousel from './Carousel'
 
-export { Section, CarouselSection, Footer, Review, Panes } 
+export { Section, CarouselSection, Footer, Carousel } 
 
 export default Section

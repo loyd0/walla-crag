@@ -1,78 +1,22 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Section, { CarouselSection, Review, Panes } from "@components/Sections"
 import { graphql } from "gatsby"
-import { Button, Feature, Availability } from '@elements'
+import sectionParser from '../functions/CMSParser'
+
+
 const features = [
   "1 King bed", "2 Single beds", "1 Sofa bed", "2 Bathrooms", "Roof terrace", "Wifi", "Very very quiet", "TV & Fire Stick", "Bluetooth speaker", "Fully equiped kitchen", "Private parking", "Central location"]
-const IndexPage = ({ data }) => (
+const IndexPage = ({ data: { allContentfulPage: { nodes } } }) => (
   <Layout>
-    <SEO title="Home" />
-    <Section
-      gradient
-      images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "landscape-lakes-min.jpg")
-      }>
-      <div className="absolute z-10 text-center w-full px-8">
-        <h1 className="border-b-4 border-white inline-block font-bold ">Your Escape in the Lakes</h1>
-        <h2 className="text-2xl md:text-4xl text-shadow-xl mt-4 md:mt-2">A peaceful retreat in the center of Keswick</h2>
-        <Button className="mt-4" linkTo="/#the-flat"> Discover Walla</Button>
-      </div>
+    <SEO title={nodes[0].metaTitle} />
+    { nodes[0].sections.map(section => sectionParser(section)) }
 
 
-    </Section>
-    <Section
-      scrollToId="the-flat"
-      overlay={0.25}
-      images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "buildings-min.jpg")
-      }>
-      <div className="absolute z-10 text-center w-full px-4 py-6 max-w-3xl self-center">
-        <h2 className="inline-block font-bold ">The Flat</h2>
-        <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-
-        <div className="flex mt-8 flex-col md:flex-row">
-          <Feature iconClassName="" />
-          <Feature icon="fa-user" />
-        </div>
-
-      </div>
 
 
-    </Section>
-    <CarouselSection
-      header="The Lounge"
-      description={["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "Photos of the Balcony"]}
-      images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "wine-min.jpg" || node.fluid.originalName === "kitchen-min.jpg")}
-    />
-    <CarouselSection
-      reverse={true}
-      header="The Kitchen"
-      description={["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "Maybe photos of cooking, or making tea, or in action."]}
-      images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "kitchen-min.jpg")}
-    />
-    <CarouselSection
-      header="Master Bedroom"
-      description={["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "With ensuite photos"]}
-      images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "master-bedroom-min.jpg")}
-    />
-    <CarouselSection
-      reverse={true}
-      header="Second Bedroom"
-      description={["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "With Annex / Dressing room"]}
-      images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "twin-room-min.jpg")}
-    />
-
-    {/* Reviews */}
-
-    <Section
-      scrollToId="reviews"
-      overlay={0.25}
-      images={data.allImageSharp.edges.filter(({ node }) => node.fluid.originalName === "bathroom-min.jpg")
-      }>
-      < Review />
-    </Section>
-
-    {/* Features */}
+  
+{/* 
     <Section 
     
     scrollToId="features"
@@ -96,7 +40,6 @@ const IndexPage = ({ data }) => (
 
     </Section>
 
-    {/* Availability */}
     <Section
       scrollToId="availability"
       overlay={0.25}
@@ -138,26 +81,146 @@ const IndexPage = ({ data }) => (
             },
           ]}
         />
-    </Section>
+    </Section> */}
   </Layout>
 )
 
 
 export const IndexQuery = graphql`
   query MyQuery {
-  allImageSharp {
-    edges {
-      node {
-          # Specify a fluid image and fragment
-          # The default maxWidth is 800 pixels
-          fluid(maxWidth: 1600) {
-            ...GatsbyImageSharpFluid
-            originalName
+    allContentfulPage(filter: {slug: {eq: "/"}}) {
+      nodes {
+        id
+        metaTitle
+        title
+        sections {
+          backgroundImage {
+            file {
+              url
+            }
+            fluid(maxWidth: 1600) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+            title
           }
+          type
+          name
+          scrollToId
+          parts {
+            ... on ContentfulPanel {
+              internal {
+                type
+              }
+              backgroundImage {
+                file {
+                  url
+                }
+                fluid(maxWidth: 500) {
+                  ...GatsbyContentfulFluid_withWebp
+                }
+                title
+                description
+              }
+              linksTo
+              title
+            }
+            ... on ContentfulContentCarousel {
+              id
+              title
+              content {
+                description {
+                  description
+                }
+                title
+              }
+              internal {
+                type
+              }
+            }
+            ... on ContentfulContent {
+              id
+              title
+              description {
+                description
+              }
+              internal {
+                type
+              }
+              callToAction {
+                text
+                type
+                linkTo
+              }
+            }
+            ... on ContentfulCarousel {
+              id
+              images {
+                title
+                fluid(maxWidth: 1200) {
+                  ...GatsbyContentfulFluid_withWebp
+                }
+              }
+              title
+              internal {
+                type
+              }
+            }
+            ... on ContentfulList {
+              id
+              internal {
+                type
+              }
+              items {
+                ... on ContentfulWalks {
+                  id
+                  icon {
+                    title
+                    file {
+                      url
+                    }
+                    internal {
+                      type
+                    }
+                  }
+                  description
+                  difficulty
+                  time
+                }
+                ... on ContentfulFeature {
+                  id
+                  icon {
+                    title
+                    file {
+                      url
+                    }
+                  }
+                  internal {
+                    type
+                  }
+                  text
+                }
+                ... on ContentfulActivity {
+                  id
+                  title
+                  description
+                  icon {
+                    file {
+                      url
+                    }
+                    title
+                    internal {
+                      type
+                    }
+                  }
+                }
+              }
+              type
+            }
+          }
+        }
       }
     }
   }
-}
 
 `
 

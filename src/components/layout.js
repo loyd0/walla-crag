@@ -27,17 +27,31 @@ const Layout = ({ children }) => {
           }
         }
       }
+      contentfulNav(id: {eq: "fd8c3bd4-23a5-59c6-96f9-beae4c72da9d"}) {
+        items {
+          linkTo
+          text
+        }
+      }
     }
   `)
 
+  const items = data.contentfulNav.items
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} logo={data.allContentfulLogo.edges[1].node.logo.file.url} />
+      <Header
+        logo={data.allContentfulLogo.edges[1].node.logo.file.url}
+        items={items}
+      />
       <div
         className="mx-auto "
       >
         <main className="min-h-screen relative z-0 ">{children}</main>
-       <Footer logo={data.allContentfulLogo.edges[1].node.logo.file.url} />
+        <Footer
+          logo={data.allContentfulLogo.edges[1].node.logo.file.url}
+          items={items} 
+        />
       </div>
     </>
   )

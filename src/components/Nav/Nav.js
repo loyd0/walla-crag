@@ -14,7 +14,7 @@ const Nav = ({ links, logo, className }) => {
                     links.map(link => 
                     <li 
                         key={link.text} 
-                        className="mr-4 m-0 hover:text-primary" 
+                        className="mr-4 m-0 hover:text-yellow-500" 
                         style={{ textShadow: 'rgba(0,0,0, 1) 0 0 30px' }}
                         >
                         <a href={link.linkTo}>{link.text}</a>

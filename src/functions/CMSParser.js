@@ -1,16 +1,13 @@
 import React from 'react'
-
-import { Login, Header, CarouselSection, Featured } from "@cms"
-
-
-
-
+import { Login, Header, CarouselSection, Featured, Central, Review, Panes } from "@cms"
 
 // Assign content
 const contentType = (parts) => ({
-    ContentfulContent: parts.filter(part => part.internal.type === "ContentfulContent"),
-    ContentfulCarousel: parts.filter(part => part.internal.type === "ContentfulCarousel"),
-    ContentfulList: parts.filter(part => part.internal.type === "ContentfulList"),
+    ContentfulContent: parts.filter(part => part && part.internal && part.internal.type === "ContentfulContent"),
+    ContentfulCarousel: parts.filter(part => part && part.internal && part.internal.type === "ContentfulCarousel"),
+    ContentfulContentCarousel: parts.filter(part => part && part.internal && part.internal.type === "ContentfulContentCarousel"),
+    ContentfulList: parts.filter(part => part && part.internal && part.internal.type === "ContentfulList"),
+    ContentfulPanel: parts.filter(part => part && part.internal && part.internal.type === "ContentfulPanel"),
     original: parts
 })
 
@@ -19,9 +16,9 @@ const sectionTypes = {
     "Header": (props) => <Header key={props.name} {...props} />,
     "Image and Text": (props) => <CarouselSection key={props.name} {...props} />,
     "Feature List":  (props) => <Featured key={props.name} {...props} />,
-    "Central": () => { },
-    "Panels": () => { },
-    "Carousel": () => { },
+    "Central": (props) => <Central key={props.name} {...props} />,
+    "Panels": (props) => <Panes key={props.name} {...props} />,
+    "Carousel": (props) => <Review key={props.name} {...props} />,
     "Login":  (props) => <Login key={props.name} {...props} />,
 
 }
@@ -30,9 +27,9 @@ const sectionParser = (section) => {
     // Segment section data
     const { backgroundImage, scrollToId, type, name } = section
     // Assign content to parts
+    console.log(`${type} | `, section.parts)
     const parts = contentType(section.parts)
-
-    return sectionTypes[type]({ parts, backgroundImage, scrollToId, type, name})
+    return sectionTypes[type]({ parts, backgroundImage, scrollToId, type, name })
 }
 
 
