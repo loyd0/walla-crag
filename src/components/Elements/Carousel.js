@@ -26,7 +26,7 @@ const Carousel = ({ images }) => {
              <div className="text-center py-4 absolute bottom-0 w-full">
                         {images && images.map((image, index) => {
                             const activeImage = index === currentImage
-                            return <i key={index} className={`ml-2 fa fa-circle hover:text-primary  text-${activeImage ? "primary" : "secondary"} ${activeImage ? "" : "hover:cursor-pointer" }`} />
+                            return <i onClick={() => setCurrentImage(index)} key={index} className={`ml-2 fa fa-circle hover:text-primary  text-${activeImage ? "primary" : "secondary"} ${activeImage ? "" : "hover:cursor-pointer" }`} />
                         })}
                     </div>
 

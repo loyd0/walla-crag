@@ -1,14 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from '@elements'
 import Img from 'gatsby-image'
 
 const Panes = ({ parts: { ContentfulPanel }}) => {
-    console.log(ContentfulPanel)
     return (
         <div className="flex md:flex-row flex-col min-h-screen">
             {ContentfulPanel.map((pane, index) => {
-                console.log(pane)
                 return <div key={pane.title + index} className={`md:h-screen lg:w-1/${ContentfulPanel.length} w-full bg-blue-${index + 2}00 h-full flex flex-col justify-center relative flex-grow` }>
                     <Link
                         className="text-white text-xl md:text-2xl font-bold z-10"
@@ -30,8 +27,5 @@ const Panes = ({ parts: { ContentfulPanel }}) => {
 
 }
 
-Panes.propTypes = {
-
-}
 
 export default Panes

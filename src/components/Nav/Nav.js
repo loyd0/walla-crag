@@ -6,8 +6,11 @@ const Nav = ({ links, logo, className }) => {
 
 
     const [showMenu, setShowMenu] = useState(false)
+
+
     return (
-        <nav className={`flex justify-between max-w-5xl mx-auto items-center py-12 ${className}`}>
+        <nav 
+        className={`flex justify-between max-w-5xl mx-auto items-center py-12 transition ${className}`}>
             <Link to="/"><img src={logo} className="h-10 m-0 ml-4 inline" /> </Link>
             <ul className="md:flex justify-end m-0 hidden">
                 {

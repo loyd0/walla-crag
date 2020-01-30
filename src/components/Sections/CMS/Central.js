@@ -17,8 +17,8 @@ const Central = ({ backgroundImage, scrollToId, parts: { ContentfulContent, Cont
                 <div className="flex mt-8 flex-col md:flex-row">
                     { 
                         type && type.toLowerCase() === "feature" ? 
-                            items.map(({icon, text}) => {
-                                return <Feature text={text} icon={icon}  />
+                            items.map(({icon, text}, index) => {
+                                return <Feature key={text+index} text={text} icon={icon}  />
                             })  : "" 
                     }
                 </div>

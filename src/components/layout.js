@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
   `)
 
   const items = data.contentfulNav.items
-
+console.log('items', items)
   return (
     <>
       <Header
@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
         items={items}
       />
       <div
-        className="mx-auto "
+        className="mx-auto bg-primary "
       >
         <main className="min-h-screen relative z-0 ">{children}</main>
         <Footer

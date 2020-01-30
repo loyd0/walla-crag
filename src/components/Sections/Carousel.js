@@ -7,6 +7,7 @@ const Content = ({ content }) => {
           className=" text-center w-full px-4 py-6 max-w-3xl self-center mx-auto sm:py-12 bg-blue-400 h-full flex-col flex justify-center"
           style={{
             minHeight: 400,
+            maxHeight: '100vh',
             backgroundColor: 'rgba(47, 81, 114, 0.4)'
           }}
         >
@@ -19,7 +20,7 @@ const Content = ({ content }) => {
 
 const ContentContainer = ({content}) => {
     const [ active, setActive ] = useState(0)
-
+  console.log('content', content)
     return (
         <div className="flex w-full h-64  z-10">
             <CarouselNavigation 
@@ -27,7 +28,7 @@ const ContentContainer = ({content}) => {
             currentItem={active}
             forwards={(currentItem, items) => setActive((currentItem + 1) % items.length)}
             backwards={(currentItem, items) => setActive((currentItem + 1) % items.length)}
-            dotClick={(index) => setActive(index) }
+            dotClick={(index) => {setActive(index); console.log('test')} }
             
             />
             <Content content={content[active]} />

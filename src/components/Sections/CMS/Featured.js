@@ -2,14 +2,14 @@ import React from 'react'
 import Section from "@sections"
 import {Card , Feature} from "@elements"
 
-const Featured = ({ backgroundImage, parts: { ContentfulContent, ContentfulList }, parts }) => {
+const Featured = ({ backgroundImage, scrollToId, parts: { ContentfulContent, ContentfulList }, parts }) => {
   const { title, description, callToAction } = ContentfulContent.length > 0 ? ContentfulContent[0] : {}
   const { items, type } = ContentfulList[0]
-  console.log('ContentfulList', ContentfulList)
   return (
     <Section
       overlay={0.2}
       className="min-h-screen bg-blue-gradient text-secondary text-center flex flex-col justify-around py-12"
+      scrollToId={scrollToId}
       images={backgroundImage}
     >
       <h2 className="z-10 mt-8 md:mb- 0" > {title} </h2>

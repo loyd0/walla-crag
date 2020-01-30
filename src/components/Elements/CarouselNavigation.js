@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const CarouselNavigation = ({items, currentItem, dotClick, forwards, backwards}) => {
+
     return (
         <div className="w-full h-full z-10 absolute top-0">
                     <div className="flex justify-between h-full text-secondary" >
@@ -15,13 +16,14 @@ const CarouselNavigation = ({items, currentItem, dotClick, forwards, backwards})
                             />
                     </div>
                    
-             <div className="text-center py-4 absolute bottom-0 w-full">
+             <div className="text-center py-4 absolute bottom-0 w-full z-40">
                         {items && items.map((item, index) => {
                             const activeItem = index === currentItem
+                            console.log(index)
                             return <i 
                                 key={index} 
                                 className={`ml-2 fa fa-circle hover:text-primary  text-${activeItem ? "primary" : "secondary"} ${activeItem ? "" : "hover:cursor-pointer" }`} 
-                                onClick={ dotClick ? (index) => dotClick(index) : ""}
+                                onClick={()=> dotClick(index)}
                             />
                         })}
                     </div>

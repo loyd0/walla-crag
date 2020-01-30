@@ -13,9 +13,13 @@
     min-height: 100vh;
 }
 
+.max-h-screen {
+    max-height: 100vh;
+}
+
 /*  Font Styling */
 body {
-    @apply text-base
+    @apply text-lg leading-relaxed
 }
 
 h1 { 
@@ -36,3 +40,4 @@ h5 {
 h6 { 
     @apply text-lg font-bold
 }
+

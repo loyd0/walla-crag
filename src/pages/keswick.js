@@ -3,6 +3,7 @@ import Layout from '@components/layout'
 
 import Section, { CarouselSection } from "@components/Sections"
 import {  Card } from '@elements'
+import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 import sectionParser from '../functions/CMSParser'
 

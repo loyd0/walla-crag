@@ -5,6 +5,8 @@ import Section, { CarouselSection } from "@components/Sections"
 import { Button } from '@elements'
 import SEO from '@components/seo'
 import sectionParser from '../functions/CMSParser'
+import { graphql } from 'gatsby'
+
 
 const friends = ({ data }) => {
   console.log(data)

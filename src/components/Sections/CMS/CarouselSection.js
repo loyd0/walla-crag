@@ -19,7 +19,7 @@ const CarouselSection = ({ parts: { ContentfulContent, ContentfulCarousel }, par
                 </p>
             </div>
             <div
-                className={` ${!reverse ? "md:order-2" : "order-1"} md:w-2/3 w-full h-50vh md:h-inherit`}
+                className={` ${!reverse ? "md:order-2" : "order-1"} md:w-2/3 w-full h-50vh md:h-inherit overflow-hidden md:max-h-screen`}
             >
                 { ContentfulCarousel.length > 0 ? <Carousel 
                     images={ContentfulCarousel[0].images}
