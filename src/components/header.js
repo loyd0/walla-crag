@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react"
 
 import Nav from '@components/Nav'
 
+
+const awaitWindow = typeof window !== 'undefined' ? window : {}
+
 const Header = ({ logo, items }) => {
 
 
@@ -18,10 +21,10 @@ const Header = ({ logo, items }) => {
     top: -100
   }
 
-  let prevScroll = window.pageYOffset
+  let prevScroll = awaitWindow.pageYOffset
 
   const scrollTrack = (event) => {
-    const scroll = window.pageYOffset
+    const scroll = awaitWindow.pageYOffset
     if ((scroll > prevScroll) !== direction) {
       setDirection(scroll > prevScroll)
     }
@@ -30,9 +33,9 @@ const Header = ({ logo, items }) => {
 
 
   useEffect(() => {
-    window.onscroll = scrollTrack
+    awaitWindow.onscroll = scrollTrack
     return () => {
-      window.onscroll = null
+      awaitWindow.onscroll = null
     };
   }, [direction])
 
