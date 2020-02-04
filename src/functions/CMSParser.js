@@ -27,7 +27,6 @@ const sectionParser = (section) => {
     // Segment section data
     const { backgroundImage, scrollToId, type, name } = section
     // Assign content to parts
-    console.log(`${type} | `, section.parts)
     const parts = contentType(section.parts)
     return sectionTypes[type]({ parts, backgroundImage, scrollToId, type, name })
 }

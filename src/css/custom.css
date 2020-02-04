@@ -39,3 +39,12 @@ p {
 .card-light:hover {
     background: rgba(256,256,256, 0.25);
 }
+
+.carousel-dots li  button::before {
+    color: white !important ;
+}
+
+.carousel-dots {
+    position: relative;
+    bottom: 80px;
+}

@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { Footer } from '@components/Sections'
-import Header from "./header"
+import { Footer } from '@sections'
+import { Header} from "@layouts"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -37,7 +37,6 @@ const Layout = ({ children }) => {
   `)
 
   const items = data.contentfulNav.items
-console.log('items', items)
   return (
     <>
       <Header

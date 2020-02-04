@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
 const Nav = ({ links, logo, className }) => {
@@ -53,10 +52,6 @@ const Nav = ({ links, logo, className }) => {
 
 Nav.defaultProps = {
     className: "text-secondary py-8"
-}
-
-Nav.propTypes = {
-
 }
 
 export default Nav

@@ -1,19 +1,13 @@
 import React from 'react'
-import Layout from '@components/layout'
-
-import Section, { CarouselSection } from "@components/Sections"
-import { Button } from '@elements'
+import Layout from '@layouts'
 import SEO from '@components/seo'
 import sectionParser from '../functions/CMSParser'
 import { graphql } from 'gatsby'
 
 
 const friends = ({ data }) => {
-  console.log(data)
-
 
   const { allContentfulPage: { nodes } } = data
-  // sectionParser(nodes[0].sections[0])
 
   return (
     <Layout>

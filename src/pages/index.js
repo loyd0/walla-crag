@@ -1,12 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "@layouts"
+import SEO from "@components/seo"
 import { graphql } from "gatsby"
 import sectionParser from '../functions/CMSParser'
 
-
-const features = [
-  "1 King bed", "2 Single beds", "1 Sofa bed", "2 Bathrooms", "Roof terrace", "Wifi", "Very very quiet", "TV & Fire Stick", "Bluetooth speaker", "Fully equiped kitchen", "Private parking", "Central location"]
 const IndexPage = ({ data: { allContentfulPage: { nodes } } }) => (
   <Layout>
     <SEO title={nodes[0].metaTitle} />
