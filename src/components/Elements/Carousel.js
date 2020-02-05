@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 // https://github.com/g787543/infinite-react-carousel
-// import Slider from 'infinite-react-carousel';
+import Slider from '../../infinite-react-carousel';
 
 const Carousel = ({ images }) => {
 
@@ -13,19 +13,16 @@ const Carousel = ({ images }) => {
 
 
     return (
-        // <Slider
-        //     arrows={false}
-        //     className="w-full h-full"
-        //     dots={true}
-        //     // nextArrow={<NextArrow />}
-        //     // prevArrow={<PrevArrow />}
-        //     dotsClass="z-10 carousel-dots relative bottom-0" >
-        //     {imagesArray.map((image, index) => <div key={index} className="w-full h-full">
-        //         <Img className="h-50vh md:h-screen z-0 " fluid={image} />
-        //     </div>)}
-        // </Slider>
-        <>
-        </>
+        <Slider
+            className="w-full h-full"
+            dots={true}
+            nextArrow={<NextArrow />}
+            prevArrow={<PrevArrow />}
+            dotsClass="z-10 carousel-dots relative bottom-0" >
+            {imagesArray.map((image, index) => <div key={index} className="w-full h-full">
+                <Img className="h-50vh md:h-screen z-0 " fluid={image} />
+            </div>)}
+        </Slider>
     );
 }
 

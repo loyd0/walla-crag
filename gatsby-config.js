@@ -62,7 +62,7 @@ module.exports = {
         develop: false, // Enable while using `gatsby develop`
         tailwind: true, // Enable tailwindcss support
         // whitelist: ['.article'], // Don't remove this selector
-        ignore: ['src/css/custom/'], // Ignore files/folders
+        ignore: ['src/css/custom/', 'src/infinite-react-carousel/lib'], // Ignore files/folders
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
       }
     },

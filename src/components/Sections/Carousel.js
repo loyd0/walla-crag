@@ -33,12 +33,12 @@ const ContentContainer = ({ content }) => {
       dotsClass="z-10 carousel-dots relative bottom-0"             
       className="w-screen min-h-screen z-10"
       dots
-      // nextArrow={<NextArrow />}
-      // prevArrow={<PrevArrow />}
+      nextArrow={<div><i className="fa fa-chevron-left text-4xl text-secondary hover:text-primary hover:cursor-pointer" /></div>}
+      prevArrow={<div><i className="fa fa-chevron-left text-4xl text-secondary hover:text-primary hover:cursor-pointer" /></div>}
     >
       {content.map((cont, index) =>
         <div key={cont.title + index}>
-          <div className="h-screen flex flex-col justify-center ">
+          <div className="min-h-screen flex flex-col justify-center ">
             <Content content={cont} />
           </div>
         </div>
