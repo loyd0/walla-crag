@@ -20,9 +20,8 @@ const Content = ({ content }) => {
 }
 
 const NextArrow = (props)=> <div {...props} ><i className="fa  fa-chevron-right text-4xl text-secondary hover:text-primary hover:cursor-pointer" /></div>
-// const NextArrow = ()=> <div>{"HI"}</div>
+
 const PrevArrow = (props)=> <div {...props}><i className="fa fa-chevron-left text-4xl text-secondary hover:text-primary hover:cursor-pointer" /></div>
-// const PrevArrow = ()=> <div>{"BYE"}</div>
 
 const ContentContainer = ({ content }) => {
   const [active, setActive] = useState(0)
@@ -33,8 +32,8 @@ const ContentContainer = ({ content }) => {
       dotsClass="z-10 carousel-dots relative bottom-0"             
       className="w-screen min-h-screen z-10"
       dots
-      nextArrow={<div><i className="fa fa-chevron-left text-4xl text-secondary hover:text-primary hover:cursor-pointer" /></div>}
-      prevArrow={<div><i className="fa fa-chevron-left text-4xl text-secondary hover:text-primary hover:cursor-pointer" /></div>}
+      nextArrow={<NextArrow />}
+      prevArrow={<PrevArrow />}
     >
       {content.map((cont, index) =>
         <div key={cont.title + index}>
