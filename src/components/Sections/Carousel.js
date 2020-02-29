@@ -37,7 +37,7 @@ const ContentContainer = ({ content }) => {
     >
       {content.map((cont, index) =>
         <div key={cont.title + index}>
-          <div className="min-h-screen flex flex-col justify-center ">
+          <div className="min-h-screen flex flex-col justify-center px-4 ">
             <Content content={cont} />
           </div>
         </div>

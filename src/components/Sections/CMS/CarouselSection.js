@@ -7,7 +7,7 @@ const CarouselSection = ({ parts: { ContentfulContent, ContentfulCarousel }, par
     const { title, description, callToAction } = ContentfulContent[0]
     const reverse = parts.original[0].internal.type === "ContentfulCarousel"
     return (
-        <div className="w-full min-h-screen flex flex-col md:flex-row flex-auto">
+        <div className="w-full min-h-screen flex flex-col md:flex-row flex-auto overflow-hidden">
             <div
                 className={`w-full md:w-1/3  ${!reverse ? "md:order-1 order-2 bg-primary text-secondary xl:pl-0" : "bg-secondary order-2 text-primary xl:pl-16"} flex flex-col justify-center pr-8 pl-8  py-8 flex-grow`}>
                 <h3 className={`mb-4 w-full xl:w-5/6 ${!reverse ? "md:ml-auto  md:text-left mx-auto" : "md:mr-auto mx-auto"}  block max-w-md`}>
