@@ -9,7 +9,7 @@ const Nav = ({ links, logo, className }) => {
 
     return (
         <nav 
-        className={`flex justify-between max-w-5xl mx-auto items-center py-12 transition ${className}`}>
+        className={`flex justify-between max-w-5xl mx-auto items-center py-6 transition ${className}`}>
             <Link to="/"><img src={logo} className="h-10 m-0 ml-4 inline" /> </Link>
             <ul className="md:flex justify-end m-0 hidden">
                 {

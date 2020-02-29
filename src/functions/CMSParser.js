@@ -1,5 +1,5 @@
 import React from 'react'
-import { Login, Header, CarouselSection, Featured, Central, Review, Panes } from "@cms"
+import { Login, Header, CarouselSection, Featured, Central, Review, Panes, Availability } from "@cms"
 
 // Assign content
 const contentType = (parts) => ({
@@ -8,6 +8,7 @@ const contentType = (parts) => ({
     ContentfulContentCarousel: parts.filter(part => part && part.internal && part.internal.type === "ContentfulContentCarousel"),
     ContentfulList: parts.filter(part => part && part.internal && part.internal.type === "ContentfulList"),
     ContentfulPanel: parts.filter(part => part && part.internal && part.internal.type === "ContentfulPanel"),
+    ContentfulCalendar: parts.filter(part => part && part.internal && part.internal.type === "ContentfulCalendar"),
     original: parts
 })
 

@@ -8,7 +8,7 @@ const Panes = ({ parts: { ContentfulPanel }}) => {
             {ContentfulPanel.map((pane, index) => {
                 return <div key={pane.title + index} className={`md:h-screen lg:w-1/${ContentfulPanel.length} w-full bg-blue-${index + 2}00 h-full flex flex-col justify-center relative flex-grow` }>
                     <Link
-                        className="text-white text-xl md:text-2xl font-bold z-10"
+                        className="text-white text-xl md:text-2xl font-bold z-10 py-10"
                         linkTo={pane.linksTo}>
                         <div
                             style={{ border: 'white 5px solid' }}

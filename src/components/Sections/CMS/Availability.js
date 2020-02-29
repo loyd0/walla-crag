@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Month from './Month'
+import {Month} from '@elements'
 
 const Availability = props => {
     const dates = Array.from(Array(30)).map(day => Math.random() > 0.5)

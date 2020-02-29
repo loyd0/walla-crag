@@ -5,8 +5,9 @@ import Featured from "./Featured"
 import Central from "./Central"
 import Review from "./Review"
 import Panes from "./Panes"
+import Availability from "./Availability"
 
 
 
 
-export { Login, Header, CarouselSection, Featured, Central, Review, Panes }
+export { Login, Header, CarouselSection, Featured, Central, Review, Panes, Availability }

@@ -15,7 +15,7 @@ const Month = ({dates, total}) => {
         >
             {dates.map((day, index) => {
 
-                return <div className={`${day ? "bg-green-400" : "bg-gray-500"} text-primary h-8 w-8 text-center self-center`}  key={index} > {index + 1} </div>
+                return <div className={`${day ? "bg-green-600 text-white" : "bg-gray-400 text-primary"}  h-8 w-8 text-center self-center`}  key={index} > {index + 1} </div>
             })}
         </div>
     )

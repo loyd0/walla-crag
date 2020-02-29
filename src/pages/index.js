@@ -144,6 +144,13 @@ export const IndexQuery = graphql`
               }
               type
             }
+            ... on ContentfulCalendar {
+            id
+            url
+            internal {
+              type
+            }
+          }
           }
         }
       }

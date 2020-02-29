@@ -49,7 +49,7 @@ const Header = ({ logo, items }) => {
         position: 'fixed',
         zIndex: 10,
         width: '100%',
-        transition: '1s',
+        transition: '0.5s',
         ...!direction ? showMenuStyle : hideMenuStyle
       }}
     >

@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 
 
-const Section = ({ images, children, overlay, gradient, scrollToId, className,style }) => {
+const Section = ({ images, children, overlay, gradient, scrollToId, className, style }) => {
     return (
         <section
             style={style}
@@ -24,7 +24,7 @@ const Section = ({ images, children, overlay, gradient, scrollToId, className,st
                     fluid={images.fluid}
                 />
                 : ""}
-            { children }
+            {children}
         </section>
     )
 }
