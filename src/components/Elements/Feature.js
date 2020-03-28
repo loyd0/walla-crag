@@ -3,7 +3,7 @@ import React from 'react'
 const Feature = ({  className, textClassName, text, icon, style, textStyle}) => {
     return (
         <div className={`px-2 ${className}`} style={style}>
-           <img className="w-20 mx-auto" style={{filter: 'invert(1)'}} src={icon.file.url} alt={icon.title} />
+           <img className="w-20 mx-auto" src={icon.file.url} alt={icon.title} />
             <p style={textStyle} className={`my-4 ${textClassName}`}> 
             { text }
             </p>

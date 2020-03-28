@@ -7,7 +7,7 @@ import Placeholder from '../../images/route.png'
 
 const Card = ({ linkTo, img, className, style, title, description, icons, light }) => {
 
-    console.log(icons)
+    console.log(linkTo, title)
     return (
         <Link linkTo={linkTo}
             className={`  ${className}`}

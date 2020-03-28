@@ -201,6 +201,7 @@ query keswickQuery {
                     }
                   }
                   description 
+                  linkTo
                   title
                   difficulty
                   time
@@ -219,6 +220,7 @@ query keswickQuery {
                   title
                   cost
                   distance
+                  linkTo
                   description
                   icon {
                     file {

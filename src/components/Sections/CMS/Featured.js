@@ -22,10 +22,11 @@ const Featured = ({ backgroundImage, scrollToId, parts: { ContentfulContent, Con
         <div className="flex flex-initial flex-wrap md:px-4 p-1 max-w-5xl mx-auto justify-center ">
           {/* Needs to select what time of thing is being iterated through */}
           {
-            items.map(({ title, description, difficulty, distance, cost, time, icon, text }, index) => {
+            items.map(({ title, description, difficulty, distance, cost, time, icon, text, linkTo }, index) => {
               return type.toLowerCase() === "card" ? <Card
               key={description + index}
               title={title}
+              linkTo={linkTo}
               description={description}
               icons={[difficulty, time, distance, cost].filter(icon => typeof icon !== 'undefined')}
               img={icon}
