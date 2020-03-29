@@ -20,6 +20,7 @@ const Featured = ({ backgroundImage, scrollToId, parts: { ContentfulContent, Con
 
       <div className=" z-10 flex flex-col justify-center py-6">
         <div className="flex flex-initial flex-wrap md:px-4 p-1 max-w-5xl mx-auto justify-center ">
+        {/* <div className="grid grid-cols-3 md:px-4 p-1 max-w-5xl mx-auto justify-center "> */}
           {/* Needs to select what time of thing is being iterated through */}
           {
             items.map(({ title, description, difficulty, distance, cost, time, icon, text, linkTo }, index) => {

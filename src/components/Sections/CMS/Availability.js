@@ -6,7 +6,7 @@ import {getMonth, currentMonth, Bookings } from '../../../functions/DateUtils'
 
 const Availability = props => {
     const dates = Array.from(Array(30)).map(day => Math.random() > 0.5)
-    const {contentfulBookings} = useStaticQuery(graphql`
+    const { contentfulBookings } = useStaticQuery(graphql`
         query DatesQuery {
         contentfulBookings {
             dates {
@@ -17,15 +17,15 @@ const Availability = props => {
     }
 `)
 
-
-    console.log(new Bookings().getMonthArrays())
-    const months = new Bookings().getMonthArrays()
+    const Booked = new Bookings
+    const months = Booked.getMonthArrays()
+    const mergedMonths = Booked.mergeBookingsWithMonths(months, contentfulBookings.dates)
 
     return (
         <div className="flex flex-col sm:flex-row justify-around w-full flex-wrap h-full">
             {
-                months.map((month, index) => {
-                    return <Month key={index} dates={month.dates} total={months.length} />
+                mergedMonths.map((month, index) => {
+                    return <Month key={index} dates={month.dates} month={ month.month} total={months.length} />
                 })
             }
         </div>

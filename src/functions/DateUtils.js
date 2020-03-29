@@ -1,5 +1,7 @@
-import moment from 'moment'
+import Moment from 'moment'
+import { extendMoment } from 'moment-range';
 
+const moment = extendMoment(Moment);
 // Get this month
 
 
@@ -79,28 +81,60 @@ export class Bookings {
     }
 
 
-    getMonthArrays() {
+    getMonthArrays(dates) {
+        console.log(dates)
         console.log(moment.months()[this.currentMonth])
         console.log(moment.months()[this.middleMonth])
         console.log(moment.months()[this.maxMonth])
         return [
             {
                 month: moment.months()[this.currentMonth],
-                dates: Array.from(Array(moment(this.currentMonthYear, "MM/YYYY").daysInMonth())).map(day => Math.random() > 0.5),
+                monthNum: this.currentMonth,
+                dates: Array.from(Array(moment(this.currentMonthYear, "MM/YYYY").daysInMonth())),
             },
             {
                 month: moment.months()[this.middleMonth],
-                dates: Array.from(Array(moment(this.middleMonthYear, "MM/YYYY").daysInMonth())).map(day => Math.random() > 0.5),
+                monthNum: this.middleMonth,
+                dates: Array.from(Array(moment(this.middleMonthYear, "MM/YYYY").daysInMonth())),
             },
             {
                 month: moment.months()[this.maxMonth],
+                monthNum: this.maxMonth,
                 dates: Array.from(Array(moment(this.maxMonthYear, "MM/YYYY").daysInMonth())).map(day => Math.random() > 0.5)
             },
-
-
-
         ]
     }
+
+
+    createDateRange(bookings) {
+
+        const ranges = bookings.map(booking => moment.range(booking.from, booking.till))
+        return ranges
+    }
+
+
+    // 1. Remove all dates that are not in the range
+    // 2. Create ranges for all bookings
+    // 3. Map through each month and create a date for each date to check if it is in the range created.
+
+    mergeBookingsWithMonths(months, bookings) {
+        const ranges = this.createDateRange(bookings)
+        const mergedMonths = months.map(month => {
+            const newDates = month.dates.map((dat, index) => { 
+                const dateString = `${index+1}/${month.monthNum+1}/${this.year}`
+                const date = moment(dateString, "D/M/YYYY")
+                return { 
+                    booked: ranges.map(range => date.within(range)).filter(range => range === true).length > 0,
+                    past: date.isAfter(this.now)
+                }
+            })
+            return { ...month, dates: newDates, }
+        })
+        console.log('mergedMonths', mergedMonths)
+        console.log('ranges', ranges)    
+        return mergedMonths
+    }
+   
 
     // getBookingArrays() {
     //     return getMonthArrays().map(month => {
@@ -113,6 +147,32 @@ export class Bookings {
 
 
 }
+
+
+
+// console.log(months)
+// const monthsOnShow = months.map(month => month.monthNum)
+// console.log(monthsOnShow)
+
+// bookings.map(booked => {
+
+//     const bookingFrom = moment(new Date(booked.from))
+//     const bookingTill = moment(new Date(booked.till))
+//     const monthBookedFrom = bookingFrom.month()
+//     const monthBookedTill = bookingTill.month()
+//     const dateRangeFrom = bookingFrom.date()
+//     const dateRangeTill = bookingTill.date()
+//     console.log(dateRangeFrom, dateRangeTill)
+//     // console.log( monthBookedFrom, monthBookedTill)
+//     const indexFrom = monthsOnShow.indexOf(monthBookedFrom)
+//     const indexTill = monthsOnShow.indexOf(monthBookedTill)
+//     if ( indexFrom !== -1 ) {
+//      console.log(monthsOnShow[indexFrom])
+//     }
+// } )
+
+
+
 
 
 

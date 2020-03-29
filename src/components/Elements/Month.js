@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Day from './Day'
 
-const Month = ({dates, total}) => {
-
+const Month = ({dates, month, total}) => {
 
     return (
+        <div>
+         <h4>{month}</h4>
         <div className={`w-56 flex flex-wrap items-center my-2 mx-auto`}
 
         style={{
@@ -13,10 +15,14 @@ const Month = ({dates, total}) => {
         }}
         
         >
+           
             {dates.map((day, index) => {
 
-                return <div className={`${day ? "bg-green-600 text-white" : "bg-gray-400 text-primary"}  h-8 w-8 text-center self-center`}  key={index} > {index + 1} </div>
+                return <Day day={day.booked} past={day.past} index={index} />
             })}
+   
+        </div>
+
         </div>
     )
 }
