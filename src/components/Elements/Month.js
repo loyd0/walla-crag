@@ -17,8 +17,7 @@ const Month = ({dates, month, total}) => {
         >
            
             {dates.map((day, index) => {
-
-                return <Day day={day.booked} past={day.past} index={index} />
+                return <Day key={index} day={day.booked} past={day.past} index={index} />
             })}
    
         </div>
