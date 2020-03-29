@@ -19,7 +19,6 @@ const CarouselNavigation = ({items, currentItem, dotClick, forwards, backwards})
              <div className="text-center py-4 absolute bottom-0 w-full z-40">
                         {items && items.map((item, index) => {
                             const activeItem = index === currentItem
-                            console.log(index)
                             return <i 
                                 key={index} 
                                 className={`ml-2 fa fa-circle hover:text-primary  text-${activeItem ? "primary" : "secondary"} ${activeItem ? "" : "hover:cursor-pointer" }`} 

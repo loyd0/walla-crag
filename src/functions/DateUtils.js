@@ -82,10 +82,6 @@ export class Bookings {
 
 
     getMonthArrays(dates) {
-        console.log(dates)
-        console.log(moment.months()[this.currentMonth])
-        console.log(moment.months()[this.middleMonth])
-        console.log(moment.months()[this.maxMonth])
         return [
             {
                 month: moment.months()[this.currentMonth],
@@ -106,85 +102,44 @@ export class Bookings {
     }
 
 
-    createDateRange(bookings) {
-
-        const ranges = bookings.map(booking => moment.range(booking.from, booking.till))
-        return ranges
-    }
-
 
     // 1. Remove all dates that are not in the range
     // 2. Create ranges for all bookings
     // 3. Map through each month and create a date for each date to check if it is in the range created.
 
+
+    createDateRange(bookings) {
+        // Creates a range of bookings so that is queryable
+        // filters dates from previous years
+        const filteredBookings = bookings.filter(booking => {
+            return moment(new Date(booking.till)).year() >= this.year 
+        })
+        const ranges = filteredBookings.map(booking => moment.range(booking.from, booking.till))
+        return ranges
+    }
+
+
     mergeBookingsWithMonths(months, bookings) {
         const ranges = this.createDateRange(bookings)
+
+        // maps the months that are created by the object
         const mergedMonths = months.map(month => {
             const newDates = month.dates.map((dat, index) => { 
+                // creates a string of the date from the index (all months are correct in the amount of days they should have)
                 const dateString = `${index+1}/${month.monthNum+1}/${this.year}`
+                // creates a moment date
                 const date = moment(dateString, "D/M/YYYY")
                 return { 
+                    // sets if that date is booked by looking through all the ranges of dates to determine if the date has been taken
+                    // !! might be an issue with tonnes of dates added, so perhaps some level of filtering at a later date would be required 
+                    // Currently filters past years
                     booked: ranges.map(range => date.within(range)).filter(range => range === true).length > 0,
+                    // if the date is in the past
                     past: date.isAfter(this.now)
                 }
             })
             return { ...month, dates: newDates, }
         })
-        console.log('mergedMonths', mergedMonths)
-        console.log('ranges', ranges)    
         return mergedMonths
     }
-   
-
-    // getBookingArrays() {
-    //     return getMonthArrays().map(month => {
-    //         return {
-    //             month: 
-    //             dates: month
-    //         }
-    //     })
-    // }
-
-
 }
-
-
-
-// console.log(months)
-// const monthsOnShow = months.map(month => month.monthNum)
-// console.log(monthsOnShow)
-
-// bookings.map(booked => {
-
-//     const bookingFrom = moment(new Date(booked.from))
-//     const bookingTill = moment(new Date(booked.till))
-//     const monthBookedFrom = bookingFrom.month()
-//     const monthBookedTill = bookingTill.month()
-//     const dateRangeFrom = bookingFrom.date()
-//     const dateRangeTill = bookingTill.date()
-//     console.log(dateRangeFrom, dateRangeTill)
-//     // console.log( monthBookedFrom, monthBookedTill)
-//     const indexFrom = monthsOnShow.indexOf(monthBookedFrom)
-//     const indexTill = monthsOnShow.indexOf(monthBookedTill)
-//     if ( indexFrom !== -1 ) {
-//      console.log(monthsOnShow[indexFrom])
-//     }
-// } )
-
-
-
-
-
-
-// Grey out all days before today
-// Create arrays for the next two months
-
-
-// Store a list of days in a month
-// Calculate if it is a leap year
-
-// Get the day of the month from the day 
-// Calculate the length of the booking
-// Mark those days as booked in the month
-
-// Handle range overlaps
