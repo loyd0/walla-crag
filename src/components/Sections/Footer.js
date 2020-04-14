@@ -31,7 +31,7 @@ const Footer = ({ logo, items }) => {
                     <a href="https://antler.digital" target="_blank" rel="noopener noreferrer"> Designed and built by <span className="underline hover:text-yellow-500">Antler Digital</span> </a>
                 </p>
                 <p className="mb-6">
-                    Copy Right © Walla Crag {new Date().getFullYear()}
+                    Copyright © Walla Crag {new Date().getFullYear()}
                 </p>
             </div>
 
