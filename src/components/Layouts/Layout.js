@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Footer } from '@sections'
 import { Header} from "@layouts"
+import CookieConsent from "react-cookie-consent";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -52,6 +53,12 @@ const Layout = ({ children }) => {
           items={items} 
         />
       </div>
+      <CookieConsent
+        acceptOnScroll={true}
+        acceptOnScrollPercentage={15}
+      >
+        This website uses cookies to anonymously enhance the user experience.
+      </CookieConsent>
     </>
   )
 }
