@@ -72,8 +72,14 @@ const keswick = ({ data }) => {
   const { allContentfulPage: { nodes } } = data
 
   return (
+    <>
+    <SEO 
+      title={ nodes[0].metaTitle}
+      description="Keswick is a market town in the heart of England’s Lake District National Park. It is situated at the head of the Borrowdale Valley and Derwentwater." 
+      image="/keswick.png"
+    />
     <Layout>
-      <SEO title={ nodes[0].metaTitle} />
+      
       { nodes[0].sections.map(section =>  sectionParser(section)) }
 {/* 
 
@@ -133,6 +139,7 @@ const keswick = ({ data }) => {
       </Section> */}
 
     </Layout>
+    </>
   )
 }
 

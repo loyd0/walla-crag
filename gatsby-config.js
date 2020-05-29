@@ -15,11 +15,22 @@ require("dotenv").config({
   path: `.env.${getEnv()}`,
 })
 
+// Handles removing the robot crawlers from Netlify preview domains and improves SEO
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = 'https://www.wallacrag.co.uk',
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV
+} = process.env;
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
+
 module.exports = {
   siteMetadata: {
     title: `Walla Crag`,
     description: `A cosy, quiet duplex flat in the heart of the beautiful town of Keswick with easy access to the whole of the Lake District.`,
     author: `Sam Loyd`,
+    siteUrl
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -88,6 +99,29 @@ module.exports = {
         extensions: [
           "js",
         ],
+      }
+    },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-netlify`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*' }]
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          }
+        }
       }
     },
     // Add fonts here

@@ -6,10 +6,16 @@ import sectionParser from '../functions/CMSParser'
 
 const IndexPage = ({ data: { allContentfulPage: { nodes } } }) => {
   return (
+    <>
+     <SEO 
+     title={nodes[0].metaTitle} 
+     image="/wallacrag.png"
+     />
     <Layout>
-      <SEO title={nodes[0].metaTitle} />
+     
       {nodes[0].sections.map(section => sectionParser(section))}
     </Layout>
+    </>
   )
 }
 
