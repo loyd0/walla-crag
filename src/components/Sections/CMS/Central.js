@@ -5,7 +5,7 @@ import Availability from './Availability'
 
 
 const Central = ({ backgroundImage, scrollToId, parts: { ContentfulContent, ContentfulList, ContentfulCalendar } }) => {
-    const { title, description, callToAction } = ContentfulContent[0]
+    const { title, description, callToAction, callToAction2 } = ContentfulContent[0]
     const { url } = ContentfulCalendar.length > 0 ? ContentfulCalendar[0] : {}
     const { items, type } = ContentfulList.length > 0 ? ContentfulList[0] : {}
 
@@ -32,7 +32,9 @@ const Central = ({ backgroundImage, scrollToId, parts: { ContentfulContent, Cont
                    
                 </div>
                 {callToAction ?
-                        <Button linkTo={callToAction.linkTo} className="hover:text-grey-200 mt-4">{callToAction.text}</Button> : ""}
+                        <Button linkTo={callToAction.linkTo} secondary={true} className="hover:text-grey-200 mt-4">{callToAction.text}</Button> : ""}
+                {callToAction2 ?
+                        <Button linkTo={callToAction2.linkTo} className="hover:text-grey-200 mt-4 md:ml-4">{callToAction2.text}</Button> : ""}
             </div>
         </Section>
     )

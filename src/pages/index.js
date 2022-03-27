@@ -85,6 +85,11 @@ export const IndexQuery = graphql`
                 type
                 linkTo
               }
+              callToAction2 {
+                text
+                type
+                linkTo
+              }
             }
             ... on ContentfulCarousel {
               id
@@ -150,13 +155,13 @@ export const IndexQuery = graphql`
               }
               type
             }
-            ... on ContentfulCalendar {
-            id
-            url
-            internal {
-              type
-            }
-          }
+          #   ... on ContentfulCalendar {
+          #   id
+          #   url
+          #   internal {
+          #     type
+          #   }
+          # }
           }
         }
       }
